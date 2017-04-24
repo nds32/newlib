@@ -15,7 +15,7 @@ extern "C" {
 
 extern char **environ;
 
-void	_EXFUN(_exit, (int __status ) _ATTRIBUTE ((noreturn)));
+void	_EXFUN(_exit, (int __status ) _ATTRIBUTE ((__noreturn__)));
 
 int	_EXFUN(access,(const char *__path, int __amode ));
 unsigned  _EXFUN(alarm, (unsigned __secs ));
@@ -165,6 +165,9 @@ int     _EXFUN(setgid, (gid_t __gid ));
 #endif
 #if defined(__CYGWIN__)
 int	_EXFUN(setgroups, (int ngroups, const gid_t *grouplist ));
+#endif
+#if __BSD_VISIBLE || (defined(_XOPEN_SOURCE) && __XSI_VISIBLE < 500)
+int	_EXFUN(sethostname, (const char *, size_t));
 #endif
 int     _EXFUN(setpgid, (pid_t __pid, pid_t __pgid ));
 int     _EXFUN(setpgrp, (void ));
